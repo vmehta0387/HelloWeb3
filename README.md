@@ -4,7 +4,9 @@
 This challenge involves deploying a Node.js application that monitors the Polygon blockchain's block height on Google Kubernetes Engine (GKE) using Terraform and CI/CD. The task will assess your skills in cloud infrastructure management, container orchestration, application deployment, monitoring, and automation.
 
 ## Prerequisites
-- Access to Google Cloud Platform (GCP) and the ability to claim $300 free credits.
+- API Key from polygonscan.com (it is free)  https://polygonscan.com/register
+- Get Access to Google Cloud Platform (GCP) and the claim $300 free credits
+    https://cloud.google.com/free/docs/gcp-free-tier/#free-trial.
 - Familiarity with Terraform, Kubernetes, Docker, Helm, Prometheus, Grafana, and GitHub Actions.
 
 ## Objectives
