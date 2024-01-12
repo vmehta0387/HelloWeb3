@@ -19,6 +19,9 @@ jobs:
           context: .
           load: true
           tags: blockchecker:latest
-      - name: Inspect
+      - name: Inspect-push
         run: |
-          docker image inspect blockchecker:latest    
+          docker image inspect blockchecker:latest
+          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
+          docker push blockchecker:latest
+          
