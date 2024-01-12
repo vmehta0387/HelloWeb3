@@ -1,27 +1,29 @@
-resource "google_compute_network" "NAME" {
-  name                    = "NAME"
-  routing_mode            = "REGIONAL"
-  auto_create_subnetworks = false
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: MPL-2.0
+
+variable "project_id" {
+  description = "project id"
 }
 
-resource "google_compute_subnetwork" "NAME" {
-  name                     = 
-  ip_cidr_range            = 
-  network                  = 
-  private_ip_google_access = true
-  region                   = 
-
-  secondary_ip_range {
-    range_name    = 
-    ip_cidr_range = 
-  }
-
-  secondary_ip_range {
-    range_name    = 
-    ip_cidr_range = 
-  }
+variable "region" {
+  description = "region"
 }
 
+provider "google" {
+  project = var.project_id
+  region  = var.region
+}
 
+# VPC
+resource "google_compute_network" "vpc" {
+  name                    = "${var.project_id}-vpc"
+  auto_create_subnetworks = "false"
+}
 
-###Aditional configuration candidate might fined usefull to add
+# Subnet
+resource "google_compute_subnetwork" "subnet" {
+  name          = "${var.project_id}-subnet"
+  region        = var.region
+  network       = google_compute_network.vpc.name
+  ip_cidr_range = "10.10.0.0/24"
+}
